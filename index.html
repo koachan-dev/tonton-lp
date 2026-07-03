@@ -40,6 +40,9 @@
 }
 </script>
 <link rel="icon" type="image/png" href="assets/img/app-icon.png">
+<link rel="apple-touch-icon" href="assets/img/app-icon.png">
+<link rel="preload" as="image" href="assets/img/hero-bg-desktop.jpg" media="(min-width:1025px)">
+<link rel="preload" as="image" href="assets/img/hero-bg-mobile.jpg" media="(max-width:1024px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@500;700&family=Outfit:wght@300;500;600;700&display=swap" rel="stylesheet">
@@ -136,7 +139,7 @@ img{-webkit-user-drag:none;user-select:none}
           <!-- iPhone モックアップ（ホーム画面） -->
           <div style="width:304px;background:#26241f;border-radius:48px;padding:11px;box-shadow:0 18px 40px rgba(80,70,55,.16),0 4px 12px rgba(80,70,55,.08)">
             <div style="background:#FBF8F3;border-radius:37px;overflow:hidden;position:relative">
-              <img src="assets/img/screen-home.png" alt="とんとんのホーム画面" style="width:100%;height:auto;display:block">
+              <img src="assets/img/screen-home.png" alt="とんとんのホーム画面" width="608" height="1322" style="width:100%;height:auto;display:block">
             </div>
           </div>
         </div>
@@ -147,7 +150,7 @@ img{-webkit-user-drag:none;user-select:none}
 
   <!-- 共感セクション -->
   <section style="position:relative;overflow:hidden;min-height:clamp(540px,62vw,780px);display:flex;align-items:center;justify-content:center">
-    <img class="parallax-img" data-parallax="8" src="assets/img/empathy-bg-desktop.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);will-change:transform">
+    <img class="parallax-img" data-parallax="8" src="assets/img/empathy-bg-desktop.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);will-change:transform">
     <div data-reveal style="position:relative;padding:80px 24px;writing-mode:vertical-rl">
       <h2 style="margin:0;font-family:'Zen Old Mincho',serif;font-weight:500;font-size:clamp(21px,2.4vw,29px);line-height:2.1;letter-spacing:.14em;color:#2C2A28">「あとで精算しよ」が、<br>そのままにならない。</h2>
       <p style="margin:6px 52px 0 0;font-family:'Zen Old Mincho',serif;font-weight:500;font-size:clamp(13px,1.3vw,15px);line-height:2.35;letter-spacing:.12em;color:#55504A">買い物、外食、日用品。<br>どちらが払ったかを記録しておくだけで、<br>ふたりの立替をやさしく整理します。</p>
@@ -162,7 +165,7 @@ img{-webkit-user-drag:none;user-select:none}
       <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:22px;align-items:start">
         <div>
           <div data-reveal class="fcard">
-            <img src="assets/img/icon-record.jpg" alt="" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
+            <img src="assets/img/icon-record.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
             <div class="cardnum">01</div>
             <h3 style="margin:10px 0 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;letter-spacing:.05em">サクッと記録</h3>
             <p style="margin:9px 0 0;font-size:14.5px;line-height:1.85;color:#6E6961;letter-spacing:.03em">金額とカテゴリを選ぶだけ。</p>
@@ -170,7 +173,7 @@ img{-webkit-user-drag:none;user-select:none}
         </div>
         <div class="feature-offset">
           <div data-reveal class="fcard" style="transition-delay:.1s">
-            <img src="assets/img/icon-settle.jpg" alt="" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
+            <img src="assets/img/icon-settle.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
             <div class="cardnum">02</div>
             <h3 style="margin:10px 0 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;letter-spacing:.05em">自動で計算</h3>
             <p style="margin:9px 0 0;font-size:14.5px;line-height:1.85;color:#6E6961;letter-spacing:.03em">どちらが多く払っているかすぐわかる。</p>
@@ -178,7 +181,7 @@ img{-webkit-user-drag:none;user-select:none}
         </div>
         <div>
           <div data-reveal class="fcard" style="transition-delay:.2s">
-            <img src="assets/img/icon-share.jpg" alt="" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
+            <img src="assets/img/icon-share.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
             <div class="cardnum">03</div>
             <h3 style="margin:10px 0 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;letter-spacing:.05em">ふたりで共有</h3>
             <p style="margin:9px 0 0;font-size:14.5px;line-height:1.85;color:#6E6961;letter-spacing:.03em">相手の記録もリアルタイムに反映。</p>
@@ -186,7 +189,7 @@ img{-webkit-user-drag:none;user-select:none}
         </div>
         <div class="feature-offset">
           <div data-reveal class="fcard" style="transition-delay:.3s">
-            <img src="assets/img/icon-payment.jpg" alt="" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
+            <img src="assets/img/icon-payment.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
             <div class="cardnum">04</div>
             <h3 style="margin:10px 0 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;letter-spacing:.05em">いつもの支払いでOK</h3>
             <p style="margin:9px 0 0;font-size:14.5px;line-height:1.85;color:#6E6961;letter-spacing:.03em">カード発行も銀行連携も不要。</p>
@@ -198,7 +201,7 @@ img{-webkit-user-drag:none;user-select:none}
 
   <!-- 価値訴求セクション -->
   <section style="position:relative;overflow:hidden;min-height:clamp(560px,58vw,720px);display:flex;align-items:center">
-    <img class="parallax-img" data-parallax="8" src="assets/img/value-bg-desktop.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);will-change:transform">
+    <img class="parallax-img" data-parallax="8" src="assets/img/value-bg-desktop.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);will-change:transform">
     <div style="position:relative;max-width:1120px;margin:0 auto;padding:64px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:40px;width:100%;box-sizing:border-box">
       <div style="flex:1 1 340px;min-width:0">
         <span data-reveal class="eyebrow" style="text-align:left">SIMPLE</span>
@@ -215,7 +218,7 @@ img{-webkit-user-drag:none;user-select:none}
           <!-- iPhone モックアップ（記録画面） -->
           <div style="width:288px;background:#26241f;border-radius:46px;padding:10px;box-shadow:0 18px 40px rgba(80,70,55,.15),0 4px 12px rgba(80,70,55,.08)">
             <div style="background:#FBF8F3;border-radius:36px;overflow:hidden;position:relative">
-              <img src="assets/img/screen-record.png" alt="とんとんの支出追加画面" style="width:100%;height:auto;display:block">
+              <img src="assets/img/screen-record.png" alt="とんとんの支出追加画面" width="608" height="1322" loading="lazy" decoding="async" style="width:100%;height:auto;display:block">
             </div>
           </div>
         </div>
@@ -305,7 +308,7 @@ img{-webkit-user-drag:none;user-select:none}
 
   <!-- 最終CTA -->
   <section id="cta" style="position:relative;overflow:hidden;min-height:clamp(460px,44vw,620px);display:flex;align-items:center;justify-content:center;scroll-margin-top:58px">
-    <img class="parallax-img" data-parallax="8" src="assets/img/cta-bg-desktop.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);will-change:transform">
+    <img class="parallax-img" data-parallax="8" src="assets/img/cta-bg-desktop.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);will-change:transform">
     <div style="position:relative;text-align:center;padding:72px 24px">
       <img data-reveal src="assets/img/app-icon.png" alt="とんとんアプリアイコン" style="width:72px;height:72px;border-radius:22%;box-shadow:0 6px 18px rgba(80,70,55,.22);margin-bottom:20px">
       <h2 data-reveal style="transition-delay:.08s;margin:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,38px);line-height:1.6;letter-spacing:.05em">ふたりのお金を、<br>今日からとんとんに。</h2>

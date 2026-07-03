@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>とんとん — ふたりの立替、もう迷わない。</title>
+<meta name="description" content="同棲カップルのための精算アプリ「とんとん」。記録するだけで、どちらがいくら多く払っているかすぐにわかります。カード発行も銀行連携も不要。">
+<meta property="og:title" content="とんとん — ふたりの立替、もう迷わない。">
+<meta property="og:description" content="同棲カップルのための精算アプリ。記録するだけで、どちらがいくら多く払っているかすぐにわかります。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://koachan-dev.github.io/tonton-lp/">
+<meta property="og:image" content="https://koachan-dev.github.io/tonton-lp/assets/img/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/img/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@500;700&family=Outfit:wght@300;500;600;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FBF8F3;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{-webkit-user-drag:none;user-select:none}
+.parallax-img{pointer-events:none}
+[data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+[data-reveal="far"]{transform:translateY(24px)}
+[data-reveal].is-in{opacity:1;transform:translateY(0)}
+.site-header{transition:background-color .4s ease,box-shadow .4s ease,-webkit-backdrop-filter .4s ease,backdrop-filter .4s ease}
+.site-header.is-scrolled{background:rgba(251,248,243,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 1px 0 #EFE8E0}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-link{text-decoration:none;color:#2C2A28;font-size:13.5px;letter-spacing:.04em;transition:color .25s ease}
+.nav-link:hover{color:#7BA888}
+.btn-store{text-decoration:none;background:#E8B86E;color:#2C2A28;font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:9px 18px;border-radius:999px;transition:transform .25s ease,filter .25s ease;box-shadow:0 2px 8px rgba(232,184,110,.3)}
+.btn-store:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn-cta{text-decoration:none;display:inline-flex;align-items:center;gap:10px;background:#E8B86E;color:#2C2A28;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:15px;letter-spacing:.05em;padding:16px 34px;border-radius:999px;box-shadow:0 5px 16px rgba(232,184,110,.32);transition:transform .25s ease,filter .25s ease,box-shadow .25s ease}
+.btn-cta:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 8px 20px rgba(232,184,110,.4)}
+.flink{text-decoration:none;color:#8A8580;font-size:12.5px;letter-spacing:.04em;transition:color .25s ease}
+.flink:hover{color:#2C2A28}
+.faq-btn{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:23px 4px;text-align:left;font-family:'Zen Kaku Gothic New',sans-serif;color:#2C2A28}
+.faq-icon{flex:none;width:22px;height:22px;display:flex;align-items:center;justify-content:center;color:#7BA888;font-size:18px;font-weight:400;transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+.faq-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.22,.61,.36,1)}
+.faq-item.is-open .faq-body{grid-template-rows:1fr}
+.faq-item.is-open .faq-icon{transform:rotate(45deg)}
+.eyebrow{display:block;text-align:center;font-family:'Outfit',sans-serif;font-weight:600;font-size:11px;letter-spacing:.34em;color:#7BA888;margin:0 0 18px}
+.fcard{background:#FFFFFF;border-radius:26px;padding:20px 20px 28px;box-shadow:0 10px 34px rgba(80,70,55,.07);transition:box-shadow .4s ease}
+.fcard:hover{box-shadow:0 18px 46px rgba(80,70,55,.12)}
+.cardnum{font-family:'Outfit',sans-serif;font-weight:300;font-size:30px;line-height:1;color:rgba(123,168,136,.8);letter-spacing:.05em;margin:20px 0 0}
+.stepnum{font-family:'Outfit',sans-serif;font-weight:300;font-size:56px;line-height:1;color:rgba(123,168,136,.62);letter-spacing:.04em}
+.steps{display:flex;flex-wrap:wrap;gap:36px 28px;justify-content:center}
+.step{flex:1 1 170px;max-width:210px;text-align:center}
+@media (max-width:760px){
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:40px 16px;justify-items:center}
+  .step{max-width:none;width:100%}
+}
+.scroll-cue{position:absolute;bottom:0;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;z-index:2}
+.scroll-cue span{font-family:'Outfit',sans-serif;font-weight:500;font-size:10px;letter-spacing:.32em;color:#75706A}
+.scroll-cue i{display:block;width:1px;height:52px;background:#A89F93;transform-origin:top;animation:cue 2.6s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes cue{0%{transform:scaleY(0);opacity:0}10%{opacity:1}45%{transform:scaleY(1);opacity:1}75%{transform:scaleY(1);opacity:0}100%{transform:scaleY(1);opacity:0}}
+@media (max-width:760px){
+  .scroll-cue{display:none}
+}
+@media (max-width:840px){.nav-links{display:none}}
+@media (min-width:900px){.feature-offset{margin-top:48px}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  [data-reveal]{opacity:1;transform:none;transition:none}
+  .parallax-img{transform:scale(1.08) !important}
+}
+</style>
+</head>
+<body>
+
+<div style="font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN',sans-serif;color:#2C2A28;background:#FBF8F3">
+
+  <!-- ヘッダー -->
+  <header class="site-header" style="position:fixed;top:0;left:0;right:0;z-index:60">
+    <div style="max-width:1120px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between">
+      <a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#2C2A28">
+        <img src="assets/img/app-icon.png" alt="とんとんアプリアイコン" style="width:30px;height:30px;border-radius:22%;box-shadow:0 2px 6px rgba(80,70,55,.22);flex:none">
+        <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em">とんとん</span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:26px">
+        <div class="nav-links">
+          <a href="#features" class="nav-link">できること</a>
+          <a href="#how" class="nav-link">使い方</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+        </div>
+        <a href="https://apps.apple.com/jp/app/id6760719046" target="_blank" rel="noopener" class="btn-store">App Storeで入手</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ヒーロー -->
+  <section id="top" style="position:relative;min-height:88svh;overflow:hidden;display:flex;align-items:center">
+    <picture>
+      <source media="(max-width:1024px)" srcset="assets/img/hero-bg-mobile.jpg">
+      <img class="parallax-img" data-parallax="10" src="assets/img/hero-bg-desktop.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;transform:scale(1.08);will-change:transform">
+    </picture>
+    <div style="position:relative;max-width:1120px;margin:0 auto;padding:104px 24px 60px;display:flex;flex-wrap:wrap;align-items:center;gap:36px;width:100%;box-sizing:border-box">
+      <div style="flex:1 1 380px;min-width:0">
+        <p data-reveal style="margin:0 0 18px;font-size:12.5px;font-weight:700;letter-spacing:.22em;color:#47624F"><span style="display:inline-block;width:30px;height:1px;background:#47624F;vertical-align:middle;margin-right:12px"></span>同棲カップルのための精算アプリ</p>
+        <h1 data-reveal style="transition-delay:.08s;margin:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:clamp(34px,4.6vw,54px);line-height:1.42;letter-spacing:.05em">ふたりの立替、<br>もう迷わない。</h1>
+        <p data-reveal style="transition-delay:.18s;margin:20px 0 0;font-size:15.5px;line-height:2;letter-spacing:.04em;color:#55504A;max-width:440px">記録するだけで、どちらがいくら多く払っているかすぐにわかります。</p>
+        <div data-reveal style="transition-delay:.3s;margin-top:28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+          <a href="https://apps.apple.com/jp/app/id6760719046" target="_blank" rel="noopener" class="btn-cta">App Storeでダウンロード</a>
+        </div>
+      </div>
+      <div style="flex:0 1 340px;display:flex;justify-content:center;margin:0 auto">
+        <div data-reveal="far" style="transition-delay:.3s">
+          <!-- iPhone モックアップ（ホーム画面） -->
+          <div style="width:304px;background:#26241f;border-radius:48px;padding:11px;box-shadow:0 18px 40px rgba(80,70,55,.16),0 4px 12px rgba(80,70,55,.08)">
+            <div style="background:#FBF8F3;border-radius:37px;overflow:hidden;position:relative">
+              <img src="assets/img/screen-home.png" alt="とんとんのホーム画面" style="width:100%;height:auto;display:block">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span>SCROLL</span><i></i></div>
+  </section>
+
+  <!-- 共感セクション -->
+  <section style="position:relative;overflow:hidden;min-height:clamp(540px,62vw,780px);display:flex;align-items:center;justify-content:center">
+    <img class="parallax-img" data-parallax="8" src="assets/img/empathy-bg-desktop.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);will-change:transform">
+    <div data-reveal style="position:relative;padding:80px 24px;writing-mode:vertical-rl">
+      <h2 style="margin:0;font-family:'Zen Old Mincho',serif;font-weight:500;font-size:clamp(21px,2.4vw,29px);line-height:2.1;letter-spacing:.14em;color:#2C2A28">「あとで精算しよ」が、<br>そのままにならない。</h2>
+      <p style="margin:6px 52px 0 0;font-family:'Zen Old Mincho',serif;font-weight:500;font-size:clamp(13px,1.3vw,15px);line-height:2.35;letter-spacing:.12em;color:#55504A">買い物、外食、日用品。<br>どちらが払ったかを記録しておくだけで、<br>ふたりの立替をやさしく整理します。</p>
+    </div>
+  </section>
+
+  <!-- 機能セクション -->
+  <section id="features" style="padding:clamp(96px,10vw,140px) 24px;scroll-margin-top:58px">
+    <div style="max-width:1140px;margin:0 auto">
+      <span data-reveal class="eyebrow">FEATURES</span>
+      <h2 data-reveal style="transition-delay:.06s;margin:0;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:clamp(25px,3.2vw,34px);line-height:1.62;letter-spacing:.05em">やることは、記録だけ。</h2>
+      <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:22px;align-items:start">
+        <div>
+          <div data-reveal class="fcard">
+            <img src="assets/img/icon-record.jpg" alt="" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
+            <div class="cardnum">01</div>
+            <h3 style="margin:10px 0 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;letter-spacing:.05em">サクッと記録</h3>
+            <p style="margin:9px 0 0;font-size:14.5px;line-height:1.85;color:#6E6961;letter-spacing:.03em">金額とカテゴリを選ぶだけ。</p>
+          </div>
+        </div>
+        <div class="feature-offset">
+          <div data-reveal class="fcard" style="transition-delay:.1s">
+            <img src="assets/img/icon-settle.jpg" alt="" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
+            <div class="cardnum">02</div>
+            <h3 style="margin:10px 0 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;letter-spacing:.05em">自動で計算</h3>
+            <p style="margin:9px 0 0;font-size:14.5px;line-height:1.85;color:#6E6961;letter-spacing:.03em">どちらが多く払っているかすぐわかる。</p>
+          </div>
+        </div>
+        <div>
+          <div data-reveal class="fcard" style="transition-delay:.2s">
+            <img src="assets/img/icon-share.jpg" alt="" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
+            <div class="cardnum">03</div>
+            <h3 style="margin:10px 0 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;letter-spacing:.05em">ふたりで共有</h3>
+            <p style="margin:9px 0 0;font-size:14.5px;line-height:1.85;color:#6E6961;letter-spacing:.03em">相手の記録もリアルタイムに反映。</p>
+          </div>
+        </div>
+        <div class="feature-offset">
+          <div data-reveal class="fcard" style="transition-delay:.3s">
+            <img src="assets/img/icon-payment.jpg" alt="" style="width:100%;height:190px;object-fit:contain;border-radius:16px;background:#FBF8F4;display:block">
+            <div class="cardnum">04</div>
+            <h3 style="margin:10px 0 0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;letter-spacing:.05em">いつもの支払いでOK</h3>
+            <p style="margin:9px 0 0;font-size:14.5px;line-height:1.85;color:#6E6961;letter-spacing:.03em">カード発行も銀行連携も不要。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 価値訴求セクション -->
+  <section style="position:relative;overflow:hidden;min-height:clamp(560px,58vw,720px);display:flex;align-items:center">
+    <img class="parallax-img" data-parallax="8" src="assets/img/value-bg-desktop.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);will-change:transform">
+    <div style="position:relative;max-width:1120px;margin:0 auto;padding:64px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:40px;width:100%;box-sizing:border-box">
+      <div style="flex:1 1 340px;min-width:0">
+        <span data-reveal class="eyebrow" style="text-align:left">SIMPLE</span>
+        <h2 data-reveal style="transition-delay:.06s;margin:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:clamp(25px,3.2vw,36px);line-height:1.62;letter-spacing:.05em">カードも、<br>銀行連携も、いらない。</h2>
+        <p data-reveal style="transition-delay:.16s;margin:18px 0 0;font-size:15.5px;line-height:2;letter-spacing:.04em;color:#55504A;max-width:440px">いつものクレカ、現金、QR決済のまま。<br>支払い方を変えずに、ふたりの精算だけをかんたんに。</p>
+        <div data-reveal style="transition-delay:.28s;margin-top:24px;display:flex;flex-direction:column;gap:11px">
+          <div style="display:flex;align-items:center;gap:11px;font-size:14px;letter-spacing:.04em"><span style="width:20px;height:20px;border-radius:50%;background:rgba(123,168,136,.14);color:#7BA888;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none">✓</span>カード発行不要</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:14px;letter-spacing:.04em"><span style="width:20px;height:20px;border-radius:50%;background:rgba(123,168,136,.14);color:#7BA888;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none">✓</span>本人確認不要</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:14px;letter-spacing:.04em"><span style="width:20px;height:20px;border-radius:50%;background:rgba(123,168,136,.14);color:#7BA888;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none">✓</span>いつもの支払いでOK</div>
+        </div>
+      </div>
+      <div style="flex:0 1 330px;display:flex;justify-content:center;margin:0 auto;padding-right:clamp(0px,4vw,48px)">
+        <div data-reveal="far" style="transition-delay:.2s">
+          <!-- iPhone モックアップ（記録画面） -->
+          <div style="width:288px;background:#26241f;border-radius:46px;padding:10px;box-shadow:0 18px 40px rgba(80,70,55,.15),0 4px 12px rgba(80,70,55,.08)">
+            <div style="background:#FBF8F3;border-radius:36px;overflow:hidden;position:relative">
+              <img src="assets/img/screen-record.png" alt="とんとんの支出追加画面" style="width:100%;height:auto;display:block">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使い方セクション -->
+  <section id="how" style="padding:clamp(96px,10vw,140px) 24px clamp(72px,8vw,100px);scroll-margin-top:58px">
+    <div style="max-width:940px;margin:0 auto">
+      <span data-reveal class="eyebrow">HOW TO USE</span>
+      <h2 data-reveal style="transition-delay:.06s;margin:0;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:clamp(25px,3.2vw,34px);line-height:1.62;letter-spacing:.05em">はじめかたは、かんたん。</h2>
+      <div class="steps" style="margin-top:56px">
+        <div data-reveal class="step">
+          <div class="stepnum">01</div>
+          <div style="margin-top:14px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:16px;letter-spacing:.05em">アプリを入れる</div>
+        </div>
+        <div data-reveal class="step" style="transition-delay:.1s">
+          <div class="stepnum">02</div>
+          <div style="margin-top:14px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:16px;letter-spacing:.05em">ふたりをつなぐ</div>
+        </div>
+        <div data-reveal class="step" style="transition-delay:.2s">
+          <div class="stepnum">03</div>
+          <div style="margin-top:14px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:16px;letter-spacing:.05em">支出を記録する</div>
+        </div>
+        <div data-reveal class="step" style="transition-delay:.3s">
+          <div class="stepnum">04</div>
+          <div style="margin-top:14px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:16px;letter-spacing:.05em">精算額を見る</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding:24px 24px clamp(110px,12vw,160px);scroll-margin-top:58px">
+    <div style="max-width:680px;margin:0 auto">
+      <span data-reveal class="eyebrow">FAQ</span>
+      <h2 data-reveal style="transition-delay:.06s;margin:0;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:clamp(25px,3.2vw,34px);line-height:1.62;letter-spacing:.05em">よくある質問</h2>
+      <div data-reveal style="transition-delay:.14s;margin-top:44px;border-top:1px solid #EFE8E0">
+        <div class="faq-item" style="border-bottom:1px solid #EFE8E0">
+          <button type="button" class="faq-btn" aria-expanded="false">
+            <span style="font-size:15.5px;font-weight:500;letter-spacing:.04em;line-height:1.7">無料で使えますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-body">
+            <div style="overflow:hidden">
+              <p style="margin:0;padding:0 4px 24px;font-size:14.5px;line-height:1.95;letter-spacing:.04em;color:#6E6961">はい、無料でお使いいただけます。記録も精算もそのままどうぞ。</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" style="border-bottom:1px solid #EFE8E0">
+          <button type="button" class="faq-btn" aria-expanded="false">
+            <span style="font-size:15.5px;font-weight:500;letter-spacing:.04em;line-height:1.7">銀行口座やカード連携は必要ですか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-body">
+            <div style="overflow:hidden">
+              <p style="margin:0;padding:0 4px 24px;font-size:14.5px;line-height:1.95;letter-spacing:.04em;color:#6E6961">いいえ、必要ありません。支払った金額を記録するだけで精算額がわかるので、口座やカードをつなぐ手続きは一切不要です。</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" style="border-bottom:1px solid #EFE8E0">
+          <button type="button" class="faq-btn" aria-expanded="false">
+            <span style="font-size:15.5px;font-weight:500;letter-spacing:.04em;line-height:1.7">ひとりでも使えますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-body">
+            <div style="overflow:hidden">
+              <p style="margin:0;padding:0 4px 24px;font-size:14.5px;line-height:1.95;letter-spacing:.04em;color:#6E6961">使えます。まずひとりで記録を始めて、あとからパートナーを招待してふたりの記録をつなげることもできます。</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" style="border-bottom:1px solid #EFE8E0">
+          <button type="button" class="faq-btn" aria-expanded="false">
+            <span style="font-size:15.5px;font-weight:500;letter-spacing:.04em;line-height:1.7">機種変更したらデータはどうなりますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-body">
+            <div style="overflow:hidden">
+              <p style="margin:0;padding:0 4px 24px;font-size:14.5px;line-height:1.95;letter-spacing:.04em;color:#6E6961">新しい端末でログインし直すだけで、これまでの記録はそのまま引き継がれます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最終CTA -->
+  <section id="cta" style="position:relative;overflow:hidden;min-height:clamp(460px,44vw,620px);display:flex;align-items:center;justify-content:center;scroll-margin-top:58px">
+    <img class="parallax-img" data-parallax="8" src="assets/img/cta-bg-desktop.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.08);will-change:transform">
+    <div style="position:relative;text-align:center;padding:72px 24px">
+      <img data-reveal src="assets/img/app-icon.png" alt="とんとんアプリアイコン" style="width:72px;height:72px;border-radius:22%;box-shadow:0 6px 18px rgba(80,70,55,.22);margin-bottom:20px">
+      <h2 data-reveal style="transition-delay:.08s;margin:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,38px);line-height:1.6;letter-spacing:.05em">ふたりのお金を、<br>今日からとんとんに。</h2>
+      <div data-reveal style="transition-delay:.15s;margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:14px">
+        <a href="https://apps.apple.com/jp/app/id6760719046" target="_blank" rel="noopener" class="btn-cta" style="padding:17px 40px">App Storeでダウンロード</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer style="background:#FBF8F3;border-top:1px solid #EFE8E0;padding:64px 24px 48px">
+    <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px">
+      <div style="display:flex;align-items:center;gap:9px">
+        <img src="assets/img/app-icon.png" alt="とんとんアプリアイコン" style="width:26px;height:26px;border-radius:22%;box-shadow:0 1px 4px rgba(80,70,55,.2);flex:none">
+        <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em">とんとん</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:center">
+        <a href="privacy.html" class="flink">プライバシーポリシー</a>
+        <a href="terms.html" class="flink">利用規約</a>
+        <a href="tokushoho.html" class="flink">特定商取引法に基づく表記</a>
+        <a href="support.html" class="flink">サポート</a>
+      </div>
+      <div style="font-size:11.5px;color:#8A8580;letter-spacing:.06em">© とんとん</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 画像のドラッグを無効化(Firefox対応)
+  document.querySelectorAll('img').forEach(function (img) {
+    img.setAttribute('draggable', 'false');
+  });
+
+  // ヘッダー背景 & パララックス
+  var header = document.querySelector('.site-header');
+  var raf = null;
+  function onScroll() {
+    if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
+    if (!reduced) {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null;
+        var vh = window.innerHeight;
+        document.querySelectorAll('[data-parallax]').forEach(function (img) {
+          var host = img.parentElement.getBoundingClientRect();
+          var progress = (host.top + host.height / 2 - vh / 2) / vh;
+          var y = -progress * parseFloat(img.dataset.parallax || '12');
+          img.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0) scale(1.08)';
+        });
+      });
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // スクロールイン
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+
+  // ページ内アンカー: 履歴を汚さずスクロール(ブラウザバックで前のページに戻れるように)
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var hash = a.getAttribute('href');
+      var el = document.querySelector(hash);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+      history.replaceState(null, '', location.pathname + location.search + (hash === '#top' ? '' : hash));
+    });
+  });
+
+  // FAQ アコーディオン
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-btn');
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.faq-item.is-open').forEach(function (other) {
+        other.classList.remove('is-open');
+        other.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

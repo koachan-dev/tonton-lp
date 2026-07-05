@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://koachan-dev.github.io/tonton-lp/sitemap.xml
+Sitemap: https://koachan-dev.github.io/tonton-lp/sitemap-1.xml

@@ -38,7 +38,7 @@ a.doc{color:var(--matcha)}
 </header>
 
 <main style="max-width:760px;margin:0 auto;padding:48px 24px 80px">
-  <p style="font-size:12.5px;color:var(--sub);margin:0 0 10px">最終更新日:2026年7月3日</p>
+  <p style="font-size:12.5px;color:var(--sub);margin:0 0 10px">最終更新日:2026年8月16日</p>
   <h1 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(26px,4vw,34px);margin:0 0 8px;line-height:1.5">プライバシーポリシー</h1>
   <p style="font-size:14.5px;line-height:2;color:var(--sub);margin:0 0 36px;text-wrap:pretty">「とんとん」(以下「本アプリ」)は、個人開発者 koachan(以下「開発者」)が提供するiOSアプリケーションです。本プライバシーポリシーは、本アプリにおける個人情報の取り扱いについて説明します。</p>
 
@@ -46,10 +46,12 @@ a.doc{color:var(--matcha)}
     <section>
       <h2 class="doc"><span></span>1. 収集する情報</h2>
       <h3 class="doc">1-1. アカウント情報</h3>
-      <p class="doc">クラウド同期機能をご利用の場合、以下の情報を収集します。</p>
+      <p class="doc">クラウド同期機能をご利用の場合、Google アカウントまたは Apple ID でのサインインを通じて以下の情報を収集します。パスワードは扱いません。</p>
       <ul class="doc">
         <li>メールアドレス(ログイン認証に使用)</li>
+        <li>アカウントの識別子</li>
       </ul>
+      <p class="doc" style="margin-top:8px">Apple ID で「メールを非公開」を選択された場合、開発者が受け取るのは Apple が発行する転送用アドレスのみです。</p>
       <h3 class="doc">1-2. 支出データ</h3>
       <p class="doc">本アプリに入力された以下のデータを保存します。</p>
       <ul class="doc">
@@ -58,18 +60,28 @@ a.doc{color:var(--matcha)}
         <li>固定費の設定情報</li>
         <li>予算の設定情報(カテゴリ別の月次予算)</li>
         <li>精算履歴</li>
-        <li>ユーザー名・パートナー名</li>
+        <li>ユーザー名・パートナー名・プロフィールアイコンの選択</li>
+        <li>プッシュ通知の宛先情報(デバイストークン。通知を許可された場合のみ)</li>
       </ul>
       <p class="doc" style="margin-top:8px">これらのデータは端末内(ローカル)に保存されます。クラウド同期を有効にした場合のみ、サーバーにも保存されます。</p>
       <h3 class="doc">1-3. 広告に関する情報</h3>
       <p class="doc">無料プランでは、Google AdMob による広告を表示しています。AdMob は、広告配信のためにデバイスの広告識別子(IDFA)やアプリの使用状況等の情報を収集する場合があります。詳細は <a href="https://policies.google.com/privacy" class="doc" target="_blank" rel="noopener">Google のプライバシーポリシー</a>をご参照ください。</p>
-      <h3 class="doc">1-4. 自動的に収集しない情報</h3>
+      <h3 class="doc">1-4. レシートの読み取り改善のためにお送りいただく情報(任意)</h3>
+      <p class="doc">レシートがうまく読み取れなかったとき、読み取り画面の「うまく読み取れないレシートを運営に送る」を実行された場合にかぎり、以下を送信します。実行されないかぎり送信されることはありません。</p>
+      <ul class="doc">
+        <li>そのレシートの写真(店名・金額・日付・購入品目が写ります)</li>
+        <li>読み取った文字列と、お客様が修正された金額・店名・日付、任意でご記入いただいたメモ</li>
+        <li>アプリのバージョン、iOS のバージョン、端末の機種名</li>
+      </ul>
+      <p class="doc" style="margin-top:8px">これらは読み取り精度の改善にのみ使用し、支出データとは別の場所に保管します。1日あたりの送信件数には上限を設けています。なお、この情報はアカウントを削除しても自動では削除されません。削除をご希望の場合は、下記のお問い合わせ先までご連絡ください。</p>
+      <h3 class="doc">1-5. 自動的に収集しない情報</h3>
       <p class="doc">本アプリは、以下の情報を自動的に収集しません。</p>
       <ul class="doc">
         <li>位置情報</li>
         <li>連絡先</li>
-        <li>写真ライブラリへのアクセス(本アプリはカメラで撮影したレシート画像のみを使用し、写真ライブラリには直接アクセスしません)</li>
+        <li>写真ライブラリの内容(レシートを写真から選ぶ場合、お客様が選択された画像のみを受け取ります。ライブラリ全体を参照することはありません。また、支出内訳のシェア画像を保存するときにのみ、写真への追加の許可を求めます)</li>
       </ul>
+      <p class="doc" style="margin-top:8px">レシートの文字の読み取りは端末内で処理しており、読み取りのために画像やテキストを外部へ送信することはありません(1-4 でお客様ご自身が送信された場合を除きます)。</p>
     </section>
     <section>
       <h2 class="doc"><span></span>2. 情報の利用目的</h2>
@@ -79,6 +91,8 @@ a.doc{color:var(--matcha)}
         <li>パートナーとのデータ同期</li>
         <li>アカウント認証</li>
         <li>サブスクリプション状態の管理</li>
+        <li>プッシュ通知の配信</li>
+        <li>レシート読み取り精度の改善(1-4 でお送りいただいた場合)</li>
       </ul>
     </section>
     <section>
@@ -100,16 +114,18 @@ a.doc{color:var(--matcha)}
       <h2 class="doc"><span></span>5. データの削除</h2>
       <p class="doc">アカウントおよびクラウド上のデータの削除をご希望の場合は、以下の方法で対応いたします。</p>
       <ul class="doc">
-        <li>アプリ内の設定画面からログアウト</li>
+        <li>アプリ内の「設定」&gt;「アカウント」&gt;「アカウント削除」から削除できます。</li>
         <li>メール(<a href="mailto:tonton.application@gmail.com" class="doc">tonton.application@gmail.com</a>)にてデータ削除をリクエスト</li>
       </ul>
+      <p class="doc" style="margin-top:8px">パートナーとペアリング中にアカウントを削除された場合、支出やレシートなどの共有データはパートナーの記録でもあるため削除されず、パートナー側に残ります。また、1-4 でお送りいただいたレシートの情報も自動では削除されません。いずれも削除をご希望の場合は、メールにてご連絡ください。</p>
     </section>
     <section>
       <h2 class="doc"><span></span>6. 第三者サービス</h2>
       <p class="doc">本アプリは以下の第三者サービスを利用しています。</p>
       <ul class="doc">
         <li><strong>Supabase</strong>: データの同期・認証(<a href="https://supabase.com/privacy" class="doc" target="_blank" rel="noopener">Supabase Privacy Policy</a>)</li>
-        <li><strong>Apple StoreKit</strong>: アプリ内課金の処理(<a href="https://www.apple.com/legal/privacy/" class="doc" target="_blank" rel="noopener">Apple Privacy Policy</a>)</li>
+        <li><strong>Google</strong>: Google アカウントでのログイン(<a href="https://policies.google.com/privacy" class="doc" target="_blank" rel="noopener">Google Privacy Policy</a>)</li>
+        <li><strong>Apple</strong>: Apple ID でのサインイン、アプリ内課金の処理、プッシュ通知の配信(<a href="https://www.apple.com/legal/privacy/" class="doc" target="_blank" rel="noopener">Apple Privacy Policy</a>)</li>
         <li><strong>Google AdMob</strong>: 広告の配信(<a href="https://policies.google.com/privacy" class="doc" target="_blank" rel="noopener">Google Privacy Policy</a>)</li>
       </ul>
     </section>

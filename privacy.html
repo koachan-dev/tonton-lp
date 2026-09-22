@@ -38,7 +38,7 @@ a.doc{color:var(--matcha)}
 </header>
 
 <main style="max-width:760px;margin:0 auto;padding:48px 24px 80px">
-  <p style="font-size:12.5px;color:var(--sub);margin:0 0 10px">最終更新日:2026年8月17日</p>
+  <p style="font-size:12.5px;color:var(--sub);margin:0 0 10px">最終更新日:2026年9月22日</p>
   <h1 style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(26px,4vw,34px);margin:0 0 8px;line-height:1.5">プライバシーポリシー</h1>
   <p style="font-size:14.5px;line-height:2;color:var(--sub);margin:0 0 36px;text-wrap:pretty">「とんとん」(以下「本アプリ」)は、個人開発者 koachan(以下「開発者」)が提供するiOSアプリケーションです。本プライバシーポリシーは、本アプリにおける個人情報の取り扱いについて説明します。</p>
 
@@ -74,7 +74,11 @@ a.doc{color:var(--matcha)}
         <li>アプリのバージョン、iOS のバージョン、端末の機種名</li>
       </ul>
       <p class="doc" style="margin-top:8px">これらは読み取り精度の改善にのみ使用し、支出データとは別の場所に保管します。1日あたりの送信件数には上限を設けています。なお、この情報はアカウントを削除しても自動では削除されません。削除をご希望の場合は、下記のお問い合わせ先までご連絡ください。</p>
-      <h3 class="doc">1-5. 自動的に収集しない情報</h3>
+      <h3 class="doc">1-5. 利用状況と購入導線の改善のための情報</h3>
+      <p class="doc">使い始めのつまずきや有料機能の案内を改善するため、アプリの利用、初期設定の完了、支出を作成したこと、ペア連携、課金画面の表示と購入操作の結果を Supabase に送信します。クラウド同期をご利用でない場合も対象です。</p>
+      <p class="doc" style="margin-top:8px">送信するのは、アプリ内でランダムに生成したインストール識別子、計測開始日時、計測導入前からの利用の有無、操作の種類と日時、アプリのバージョン、課金画面の入口、購入商品の識別子や取引の識別子・日時・無料体験等の区分です。認証済みの場合はアカウント識別子とペア識別子に関連付けることがあります。この計測には支出の金額・メモ、名前、メールアドレス、レシート画像、広告識別子は含めず、他社のアプリやウェブサイトを横断する広告追跡には使用しません。</p>
+      <p class="doc" style="margin-top:8px">操作ログは受信から180日を目安に削除します。インストール識別子などの管理情報は、最後の受信から180日を目安に削除します。アプリ内でアカウント削除を行っても、これらの計測情報は自動では削除されない場合があります。保持期間より前の削除をご希望の場合は、下記のお問い合わせ先までご連絡ください。</p>
+      <h3 class="doc">1-6. 自動的に収集しない情報</h3>
       <p class="doc">本アプリは、以下の情報を自動的に収集しません。</p>
       <ul class="doc">
         <li>位置情報</li>
@@ -91,6 +95,7 @@ a.doc{color:var(--matcha)}
         <li>パートナーとのデータ同期</li>
         <li>アカウント認証</li>
         <li>サブスクリプション状態の管理</li>
+        <li>利用状況の把握と初期設定・購入導線の改善</li>
         <li>プッシュ通知の配信</li>
         <li>レシート読み取り精度の改善(1-4 でお送りいただいた場合)</li>
         <li>お客様の操作によるデータの書き出し(CSV・AIに相談)</li>
@@ -110,7 +115,7 @@ a.doc{color:var(--matcha)}
       <h3 class="doc">4-1. ローカルデータ</h3>
       <p class="doc">端末内に保存されたデータは、アプリを削除することで消去されます。</p>
       <h3 class="doc">4-2. クラウドデータ</h3>
-      <p class="doc">クラウド同期を利用した場合、データは Supabase(クラウドサービス)のサーバーに保存されます。サーバーは適切なセキュリティ対策が施された環境で運用されています。</p>
+      <p class="doc">クラウド同期を利用した場合、支出などの同期対象データは Supabase(クラウドサービス)のサーバーに保存されます。1-4 の任意でお送りいただいた情報と、1-5 の利用状況・購入導線の計測情報もサーバーに保存されます。1-5 の計測は、クラウド同期をご利用でない場合も対象です。サーバーは適切なセキュリティ対策が施された環境で運用されています。</p>
     </section>
     <section>
       <h2 class="doc"><span></span>5. データの削除</h2>
@@ -125,7 +130,7 @@ a.doc{color:var(--matcha)}
       <h2 class="doc"><span></span>6. 第三者サービス</h2>
       <p class="doc">本アプリは以下の第三者サービスを利用しています。</p>
       <ul class="doc">
-        <li><strong>Supabase</strong>: データの同期・認証(<a href="https://supabase.com/privacy" class="doc" target="_blank" rel="noopener">Supabase Privacy Policy</a>)</li>
+        <li><strong>Supabase</strong>: データの同期・認証・利用状況と購入導線の分析(<a href="https://supabase.com/privacy" class="doc" target="_blank" rel="noopener">Supabase Privacy Policy</a>)</li>
         <li><strong>Google</strong>: Google アカウントでのログイン(<a href="https://policies.google.com/privacy" class="doc" target="_blank" rel="noopener">Google Privacy Policy</a>)</li>
         <li><strong>Apple</strong>: Apple ID でのサインイン、アプリ内課金の処理、プッシュ通知の配信(<a href="https://www.apple.com/legal/privacy/" class="doc" target="_blank" rel="noopener">Apple Privacy Policy</a>)</li>
         <li><strong>Google AdMob</strong>: 広告の配信(<a href="https://policies.google.com/privacy" class="doc" target="_blank" rel="noopener">Google Privacy Policy</a>)</li>
